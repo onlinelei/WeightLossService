@@ -7,12 +7,14 @@
     <groupId>top.okeng</groupId>
     <artifactId>WeightLossService</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <packaging>pom</packaging>
+    <modules>
+        <module>weight-loss-bootstrap</module>
+        <module>weight-loss-service-controller</module>
+        <module>weight-loss-service-domain</module>
+        <module>weight-loss-dao</module>
+        <module>weight-loss-service-common</module>
+    </modules>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -21,46 +23,89 @@
         <relativePath/>
     </parent>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.9.1</version>  <!-- 适配Java 8的版本 -->
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-    </dependencies>
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.spring.boot.version>2.7.18</project.spring.boot.version>
+        <mapstruct.version>1.6.1</mapstruct.version>
+        <modile.version>1.0-SNAPSHOT</modile.version>
+    </properties>
 
-    <build>
-        <plugins>
-            <plugin>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.7.18</version> <!-- 与 Spring Boot 版本一致 -->
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${project.spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>${project.spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>${project.spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>0.9.1</version>  <!-- 适配Java 8的版本 -->
+            </dependency>
+
+            <!-- MapStruct 核心库 -->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <!-- MapStruct 注解处理器 -->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 -->
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>2.0.52</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>2.3.3</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.33</version>  <!-- 与MySQL 8.x兼容 -->
+            </dependency>
+
+            <!-- 本身项目依赖 -->
+            <dependency>
+                <groupId>top.okeng</groupId>
+                <artifactId>weight-loss-service-common</artifactId>
+                <version>${modile.version}</version>  <!-- 使用项目版本 -->
+            </dependency>
+            <dependency>
+                <groupId>top.okeng</groupId>
+                <artifactId>weight-loss-service-dao</artifactId>
+                <version>${modile.version}</version>  <!-- 使用项目版本 -->
+            </dependency>
+            <dependency>
+                <groupId>top.okeng</groupId>
+                <artifactId>weight-loss-service-domain</artifactId>
+                <version>${modile.version}</version>  <!-- 使用项目版本 -->
+            </dependency>
+            <dependency>
+                <groupId>top.okeng</groupId>
+                <artifactId>weight-loss-service-controller</artifactId>
+                <version>${modile.version}</version>  <!-- 使用项目版本 -->
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>
