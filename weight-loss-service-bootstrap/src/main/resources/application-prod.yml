@@ -9,8 +9,9 @@ spring:
 
 logging:
   level:
-    top.okeng: INFO
+    top.okeng: DEBUG
     org.springframework: WARN
+    org.springframework.boot.autoconfigure: INFO
   file:
     name: logs/weight-loss-app.log
 

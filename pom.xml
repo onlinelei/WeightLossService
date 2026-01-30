@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>weight-loss-bootstrap</module>
+        <module>weight-loss-service-bootstrap</module>
         <module>weight-loss-service-controller</module>
         <module>weight-loss-service-domain</module>
         <module>weight-loss-dao</module>

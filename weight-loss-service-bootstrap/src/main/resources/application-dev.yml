@@ -11,5 +11,6 @@ logging:
   level:
     top.okeng: DEBUG
     org.springframework: INFO
+    org.springframework.boot.autoconfigure: INFO
 
 debug: true
