@@ -1,5 +1,4 @@
-
-
+## WeightLoss 数据库创建脚本
 ```sql
 -- 创建数据库
 CREATE DATABASE IF NOT EXISTS weight-loss 
@@ -24,13 +23,4 @@ CREATE TABLE users (
 INSERT INTO users (username, password) VALUES
 ('admin', '$2a$10$rOzZUVb7kCdUQp3qJ5x4E.4bQ4QZ8QjLpLkLmNpQrStUvWwXyZzAb' ),
 ('testuser', '$2a$10$rOzZUVb7kCdUQp3qJ5x4E.4bQ4QZ8QjLpLkLmNpQrStUvWwXyZzAb');
-```
-
-```
-# 基本连接测试
-mysql -h 8.129.8.11 -P 3306 -u root -p
-
-# 或者指定数据库
-mysql -h localhost -u root -p -D auth_service
-
 ```

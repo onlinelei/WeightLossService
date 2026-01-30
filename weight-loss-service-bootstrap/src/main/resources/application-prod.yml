@@ -14,7 +14,3 @@ logging:
     org.springframework.boot.autoconfigure: INFO
   file:
     name: logs/weight-loss-app.log
-
-server:
-  ssl:
-    enabled: true
