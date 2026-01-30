@@ -6,11 +6,7 @@ import top.okeng.rpc.response.BaseResult;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-/**
- * @author ray
- * @description
- * @date 2024/8/16 4:16 PM
- */
+
 public class AbstractProviderTemplate {
 
     protected <T extends BaseResult> T msgHandle(T baseResult) {

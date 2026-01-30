@@ -1,11 +1,7 @@
 package top.okeng.rpc.response;
 
 
-/**
- * @author ray
- * @description 结果
- * @date 2024/8/16 4:16 PM
- */
+
 public class BaseResult<T> extends BaseDTO {
 
     private T data;

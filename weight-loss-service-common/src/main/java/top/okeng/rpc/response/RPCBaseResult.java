@@ -3,11 +3,6 @@ package top.okeng.rpc.response;
 
 import java.io.Serializable;
 
-/**
- * @author ray
- * @description RPC接口通用的返回结果
- * @date 2024/8/16 4:16 PM
- */
 public class RPCBaseResult<T> extends BaseResult<T> implements Serializable {
 
     public RPCBaseResult() {
