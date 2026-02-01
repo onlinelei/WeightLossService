@@ -1,21 +1,21 @@
 package top.okeng.controller;
 
-import top.okeng.dto.ChangePasswordRequest;
-import top.okeng.dto.TokenResponse;
-import top.okeng.services.UserService;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import top.okeng.auth.security.JwtUtil;
 import top.okeng.dto.AuthRequest;
-import top.okeng.dto.AuthResponse;
+import top.okeng.dto.ChangePasswordRequest;
+import top.okeng.dto.TokenResponse;
 import top.okeng.dto.UserRegistrationDto;
 import top.okeng.entity.User;
+import top.okeng.exception.BaseError;
 import top.okeng.rpc.response.RPCBaseResult;
 import top.okeng.rpc.template.SOAProviderTemplate;
+import top.okeng.services.UserService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,14 +30,18 @@ public class AuthController extends SOAProviderTemplate {
     private final JwtUtil jwtUtil;
     private final UserService userService;
 
+    private final PasswordEncoder passwordEncoder;
+
     public AuthController(AuthenticationManager authenticationManager,
                           UserDetailsService userDetailsService,
                           JwtUtil jwtUtil,
-                          UserService userService) {
+                          UserService userService,
+                          PasswordEncoder passwordEncoder) {
         this.authenticationManager = authenticationManager;
         this.userDetailsService = userDetailsService;
         this.jwtUtil = jwtUtil;
         this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @PostMapping("/register")
@@ -61,11 +65,14 @@ public class AuthController extends SOAProviderTemplate {
     @PostMapping("/login")
     public RPCBaseResult<?> login(@RequestBody AuthRequest authRequest) {
         return execute(() -> {
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
-            );
-
+            // 查询用户信息
             User user = userService.findByUsername(authRequest.getUsername());
+
+            // 如果用户存在，验证密码
+            if (!passwordEncoder.matches(authRequest.getPassword(), user.getPassword())) {
+                throw BaseError.PASSWORD_ERROR.getException();
+            }
+
             final UserDetails userDetails = userDetailsService.loadUserByUsername(authRequest.getUsername());
             final String jwt = jwtUtil.generateToken(userDetails);
 
