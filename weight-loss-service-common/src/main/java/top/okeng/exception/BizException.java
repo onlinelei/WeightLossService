@@ -1,11 +1,6 @@
 package top.okeng.exception;
 
 
-/**
- * @author ray
- * @description 业务异常，很可能异常当中带数据
- * @date 2024/8/16 4:16 PM
- */
 public abstract class BizException extends RuntimeException {
     /**
      * 业务数据

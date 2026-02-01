@@ -8,11 +8,6 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 
-/**
- * @author ray
- * @description
- * @date 2024/8/16 4:16 PM
- */
 public class SOAProviderTemplate extends AbstractProviderTemplate {
 
     /**

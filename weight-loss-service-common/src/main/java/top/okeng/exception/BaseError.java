@@ -2,11 +2,7 @@ package top.okeng.exception;
 
 import java.util.Objects;
 
-/**
- * @author ray
- * @description <TODO description class purpose>
- * @date 2024/8/16 4:16 PM
- */
+
 public enum BaseError implements Error {
     /*** 系统异常 ***/
     SUCCESS(0, "0", "success"),
