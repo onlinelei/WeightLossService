@@ -23,7 +23,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController extends SOAProviderTemplate {
-    private static final Long EXPIRES_IN = 604800L;
+    private static final Long EXPIRES_IN = 31536000L; // 1年
 
     private final AuthenticationManager authenticationManager;
     private final UserDetailsService userDetailsService;
