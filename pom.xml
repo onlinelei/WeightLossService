@@ -29,7 +29,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.spring.boot.version>2.7.18</project.spring.boot.version>
         <mapstruct.version>1.6.1</mapstruct.version>
-        <modile.version>1.0-SNAPSHOT</modile.version>
+        <module.version>1.0-SNAPSHOT</module.version>
         <!-- 更新版本 -->
         <mybatis-plus.version>3.5.6</mybatis-plus.version>
         <mysql.version>8.0.33</mysql.version>
@@ -107,22 +107,22 @@
             <dependency>
                 <groupId>top.okeng</groupId>
                 <artifactId>weight-loss-service-common</artifactId>
-                <version>${modile.version}</version>
+                <version>${module.version}</version>
             </dependency>
             <dependency>
                 <groupId>top.okeng</groupId>
                 <artifactId>weight-loss-service-dao</artifactId>
-                <version>${modile.version}</version>
+                <version>${module.version}</version>
             </dependency>
             <dependency>
                 <groupId>top.okeng</groupId>
                 <artifactId>weight-loss-service-domain</artifactId>
-                <version>${modile.version}</version>
+                <version>${module.version}</version>
             </dependency>
             <dependency>
                 <groupId>top.okeng</groupId>
                 <artifactId>weight-loss-service-controller</artifactId>
-                <version>${modile.version}</version>
+                <version>${module.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
